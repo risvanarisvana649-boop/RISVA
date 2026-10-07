@@ -2,128 +2,235 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>RISVA AI | Creativity Starts With You</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
+
     <!-- ================= NAVBAR ================= -->
 
-    <header class="navbar">
+    <nav class="navbar">
 
-        <div class="brand">
-            RISVA <span>AI</span>
+        <div class="nav-logo">
+            RISVA AI
         </div>
 
-        <nav>
+
+        <div class="nav-links">
+
             <a href="#home">HOME</a>
+
             <a href="#about">ABOUT</a>
+
             <a href="#projects">PROJECTS</a>
+
             <a href="#founder">FOUNDER</a>
+
             <a href="#contact">CONTACT</a>
-        </nav>
 
-    </header>
+        </div>
+
+    </nav>
 
 
-    <!-- ================= HOME ================= -->
 
-    <section id="home" class="hero">
+    <!-- ================= HERO ================= -->
 
-        <!-- LOGO VIEW ONLY -->
-        <div class="logo-frame">
+    <section
+        id="home"
+        class="hero"
+    >
 
-            <img
-                src="images/logo.png"
-                alt="RISVA Logo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+
+        <!-- LOGO -->
+
+        <div class="logo-container">
+
+
+            <label
+                for="logoUpload"
+                class="logo-add"
+                title="Set Logo"
             >
 
-            <div class="logo-placeholder">
+                +
+
+            </label>
+
+
+            <input
+                type="file"
+                id="logoUpload"
+                accept="image/*"
+                hidden
+            >
+
+
+            <img
+                id="logoImage"
+                src=""
+                alt="RISVA Logo"
+            >
+
+
+            <div
+                id="logoText"
+                class="logo-text"
+            >
+
                 RISVA
+
             </div>
+
 
         </div>
 
 
-        <p class="welcome">WELCOME TO</p>
 
-        <h1>
-            RISVA <span>AI</span>
+        <h1 class="main-title">
+
+            RISVA AI
+
         </h1>
 
-        <h2>
-            CREATIVITY STARTS WITH YOU.
-        </h2>
 
-        <p class="hero-text">
-            RISVA AI doesn't create your creativity.
-            <br>
-            It activates it.
+
+        <p class="tagline">
+
+            Creativity Starts With You.
+
         </p>
 
-        <a href="#projects" class="main-button">
-            EXPLORE PROJECTS →
+
+
+        <p class="hero-description">
+
+            RISVA AI doesn't create your creativity.
+
+            <br>
+
+            It activates it.
+
+        </p>
+
+
+
+        <a
+            href="#projects"
+            class="main-button"
+        >
+
+            EXPLORE PROJECTS
+
         </a>
 
+
     </section>
+
 
 
     <!-- ================= ABOUT ================= -->
 
-    <section id="about" class="section">
+    <section
+        id="about"
+        class="section"
+    >
 
-        <p class="section-number">01 / 04</p>
 
-        <h2>THE IDEA</h2>
+        <h2>
 
-        <p class="section-text">
-            RISVA AI is a creative space for people who love
-            imagination, stories, films, design and new ideas.
-        </p>
+            ABOUT RISVA
 
-        <p class="section-text">
-            Think differently. Explore freely. Create something
-            that belongs to you.
-        </p>
+        </h2>
+
+
+
+        <div class="about-box">
+
+
+            <p>
+
+                RISVA AI is a creative space designed
+                to help people discover, develop and
+                express their own ideas.
+
+            </p>
+
+
+            <p>
+
+                It doesn't create ideas for you.
+
+                It helps you think differently and
+                turn your imagination into something
+                meaningful.
+
+            </p>
+
+
+        </div>
+
 
     </section>
 
 
+
     <!-- ================= PROJECTS ================= -->
 
-    <section id="projects" class="section projects-section">
+    <section
+        id="projects"
+        class="section"
+    >
 
-        <p class="section-number">02 / 04</p>
 
-        <h2>PROJECTS</h2>
+        <h2>
 
-        <p class="section-text">
-            Explore creative projects and build your own ideas.
+            CREATIVE PROJECTS
+
+        </h2>
+
+
+        <p class="section-subtitle">
+
+            Anyone can share their creative project.
+
         </p>
 
 
-        <!-- ADD PROJECT -->
 
-        <div class="project-create">
+        <!-- PROJECT FORM -->
 
-            <h3>ADD YOUR PROJECT</h3>
+        <div class="project-form">
+
 
             <input
                 type="text"
                 id="projectTitle"
-                placeholder="Project title"
+                placeholder="Project Title"
             >
+
 
             <textarea
                 id="projectDescription"
-                placeholder="Write about your project..."
+                placeholder="Describe your project..."
             ></textarea>
+
 
             <input
                 type="text"
@@ -131,114 +238,224 @@
                 placeholder="Image URL (optional)"
             >
 
+
             <button
-                class="main-button"
                 onclick="saveProject()"
+                class="save-button"
             >
-                + SAVE PROJECT
+
+                + ADD PROJECT
+
             </button>
 
+
         </div>
+
 
 
         <!-- PROJECT LIST -->
 
-        <div id="projectList" class="project-list">
+        <div
+            id="projectList"
+            class="project-list"
+        >
 
         </div>
 
+
     </section>
+
 
 
     <!-- ================= FOUNDER ================= -->
 
-    <section id="founder" class="section founder-section">
+    <section
+        id="founder"
+        class="section"
+    >
 
-        <p class="section-number">03 / 04</p>
 
-        <h2>FOUNDER</h2>
+        <h2>
+
+            FOUNDER
+
+        </h2>
 
 
-        <!-- VIEW ONLY -->
 
-        <div class="founder-frame">
+        <div class="founder-card">
 
-            <img
-                src="images/founder.png"
-                alt="Founder"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            >
 
-            <div class="founder-placeholder">
-                FOUNDER
+            <!-- FOUNDER IMAGE -->
+
+            <div class="founder-image-box">
+
+
+                <label
+                    for="founderUpload"
+                    class="founder-add"
+                    title="Set Founder Image"
+                >
+
+                    +
+
+                </label>
+
+
+                <input
+                    type="file"
+                    id="founderUpload"
+                    accept="image/*"
+                    hidden
+                >
+
+
+                <img
+                    id="founderImage"
+                    src=""
+                    alt="Founder"
+                >
+
+
+                <div
+                    id="founderText"
+                    class="founder-placeholder"
+                >
+
+                    FOUNDER
+
+                </div>
+
+
             </div>
+
+
+
+            <h3>
+
+                A RISVANA BEGAM
+
+            </h3>
+
+
+
+            <p>
+
+                B.Sc. Computer Science Student
+
+            </p>
+
+
+
+            <p class="founder-skills">
+
+                Creative Thinking •
+                Story Writing •
+                Concept Development •
+                Graphic Design •
+                Web Design •
+                AI Tools •
+                Video Editing
+
+            </p>
+
 
         </div>
 
 
-        <h3 class="founder-name">
-            A RISVANA BEGAM
-        </h3>
-
-        <p class="founder-role">
-            B.Sc. Computer Science Student
-        </p>
-
-        <p class="founder-skills">
-            Creative Thinking • Story Writing • Graphic Design
-            • Web Design • AI Tools • Video Editing
-        </p>
-
     </section>
+
 
 
     <!-- ================= CONTACT ================= -->
 
-    <section id="contact" class="section contact-section">
+    <section
+        id="contact"
+        class="section"
+    >
 
-        <p class="section-number">04 / 04</p>
 
-        <h2>LET'S CREATE</h2>
+        <h2>
+
+            CONTACT
+
+        </h2>
+
+
 
         <div class="contact-box">
 
-            <a href="mailto:risvanarisvana649@gmail.com">
-                📧 Email
+
+            <a
+                href="mailto:risvanarisvana649@gmail.com"
+            >
+
+                📧
+                risvanarisvana649@gmail.com
+
             </a>
 
-            <a href="tel:+917904446315">
-                📞 Phone
+
+
+            <a
+                href="tel:7904446315"
+            >
+
+                📞
+                7904446315
+
             </a>
 
-            <div>
-                📍 Salem, Tamil Nadu
-            </div>
+
+
+            <p>
+
+                📍
+                Salem, Tamil Nadu, Tharamangalam
+
+            </p>
+
 
         </div>
 
+
     </section>
+
 
 
     <!-- ================= FOOTER ================= -->
 
     <footer>
 
-        <h2>
-            RISVA <span>AI</span>
-        </h2>
+
+        <h3>
+
+            RISVA AI
+
+        </h3>
+
 
         <p>
+
             Creativity Starts With You.
+
         </p>
 
-        <small>
-            © 2026 RISVA AI
-        </small>
+
+        <p>
+
+            © 2026 RISVA AI.
+            All Rights Reserved.
+
+        </p>
+
 
     </footer>
 
 
+
     <script src="script.js"></script>
+
 
 </body>
 
