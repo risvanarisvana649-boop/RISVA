@@ -1,6 +1,6 @@
 /* =========================================
    RISVA AI
-   BLACK + WHITE + 3D
+   PREMIUM BLACK + WHITE DESIGN
 ========================================= */
 
 * {
@@ -14,70 +14,23 @@ html {
 }
 
 body {
-    background: #000;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
-}
-
-
-/* =========================================
-   BACKGROUND
-========================================= */
-
-body::before {
-
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        );
-
-    background-size: 50px 50px;
-
-    pointer-events: none;
-
-    z-index: -2;
-}
-
-
-body::after {
-
-    content: "";
-
-    position: fixed;
-
-    width: 500px;
-    height: 500px;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
     background:
         radial-gradient(
-            circle,
-            rgba(255,255,255,0.08),
-            transparent 70%
+            circle at top,
+            #1c1c1c 0%,
+            #070707 35%,
+            #000000 75%
         );
 
-    filter: blur(60px);
+    color: white;
 
-    z-index: -1;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-    pointer-events: none;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 
@@ -86,80 +39,58 @@ body::after {
 ========================================= */
 
 .navbar {
-
     position: fixed;
-
     top: 0;
     left: 0;
 
     width: 100%;
+    min-height: 70px;
 
-    padding: 20px 7%;
+    padding: 0 7%;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
-    background: rgba(0,0,0,0.88);
+    background: rgba(0, 0, 0, 0.78);
 
     backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid #222;
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.15);
 
     z-index: 999;
 }
 
-
-.brand {
-
-    font-size: 25px;
-
-    font-weight: bold;
+.nav-logo {
+    font-size: 24px;
+    font-weight: 900;
 
     letter-spacing: 5px;
 
     text-shadow:
-        0 0 10px #fff,
-        0 0 25px #555;
+        0 0 10px white,
+        0 0 25px rgba(255, 255, 255, 0.5);
 }
 
-
-.brand span {
-
-    color: #777;
-}
-
-
-nav {
-
+.nav-links {
     display: flex;
-
     gap: 28px;
 }
 
-
-nav a {
-
-    color: #fff;
-
+.nav-links a {
+    color: white;
     text-decoration: none;
 
-    font-size: 13px;
-
+    font-size: 12px;
     letter-spacing: 2px;
 
-    transition: .4s;
+    transition: 0.3s ease;
 }
 
-
-nav a:hover {
-
-    color: #aaa;
-
-    text-shadow:
-        0 0 10px #fff;
+.nav-links a:hover {
+    text-shadow: 0 0 15px white;
+    transform: translateY(-2px);
 }
 
 
@@ -168,674 +99,106 @@ nav a:hover {
 ========================================= */
 
 .hero {
-
     min-height: 100vh;
 
-    padding: 130px 20px 100px;
+    padding:
+        130px 20px
+        80px;
 
     display: flex;
-
     flex-direction: column;
 
     justify-content: center;
-
     align-items: center;
 
     text-align: center;
-
-    perspective: 1200px;
 }
-
-
-/* LOGO */
-
-.logo-frame {
-
-    width: 150px;
-
-    height: 150px;
-
-    border: 2px solid #fff;
-
-    border-radius: 50%;
-
-    overflow: hidden;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    margin-bottom: 35px;
-
-    background: #050505;
-
-    box-shadow:
-
-        0 0 20px rgba(255,255,255,.15),
-
-        0 20px 50px rgba(255,255,255,.08);
-
-    transform-style: preserve-3d;
-
-    transition: .5s;
-}
-
-
-.logo-frame:hover {
-
-    transform:
-        rotateY(10deg)
-        rotateX(8deg)
-        translateZ(30px)
-        scale(1.05);
-
-    box-shadow:
-
-        0 0 40px rgba(255,255,255,.25);
-}
-
-
-.logo-frame img {
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-}
-
-
-.logo-placeholder {
-
-    display: none;
-
-    width: 100%;
-    height: 100%;
-
-    justify-content: center;
-    align-items: center;
-
-    font-weight: bold;
-
-    letter-spacing: 4px;
-
-    color: #fff;
-}
-
-
-.welcome {
-
-    color: #777;
-
-    font-size: 13px;
-
-    letter-spacing: 10px;
-
-    margin-bottom: 15px;
-}
-
 
 .hero h1 {
-
-    font-size: clamp(65px, 14vw, 170px);
+    font-size:
+        clamp(55px, 10vw, 120px);
 
     font-weight: 900;
 
     letter-spacing: 12px;
 
-    line-height: 1;
+    margin-bottom: 18px;
 
     text-shadow:
+        3px 3px 0 #555,
+        6px 6px 0 #222,
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 60px rgba(255, 255, 255, 0.2);
 
-        0 3px 0 #777,
-
-        0 7px 0 #444,
-
-        0 15px 30px rgba(255,255,255,.2),
-
-        0 0 60px rgba(255,255,255,.12);
-
-    transform: translateZ(60px);
-
-    transition: .5s;
+    transition: 0.4s ease;
 }
-
 
 .hero h1:hover {
-
     transform:
-        translateZ(100px)
-        scale(1.03);
+        perspective(600px)
+        rotateX(8deg)
+        scale(1.04);
 
     text-shadow:
-
-        0 4px 0 #888,
-
-        0 10px 0 #444,
-
-        0 20px 40px rgba(255,255,255,.4);
+        0 0 20px white,
+        0 0 50px white;
 }
-
-
-.hero h1 span {
-
-    color: #777;
-}
-
 
 .hero h2 {
+    font-size: 24px;
+    letter-spacing: 4px;
 
-    margin-top: 30px;
-
-    font-size: clamp(18px, 4vw, 35px);
-
-    letter-spacing: 5px;
-
-    text-shadow:
-        0 0 10px #fff,
-        0 0 25px #555;
+    margin-bottom: 22px;
 }
 
-
-.hero-text {
-
-    color: #888;
-
-    margin: 30px 0;
-
-    line-height: 2;
-
-    font-size: 16px;
-}
-
-
-/* =========================================
-   BUTTON
-========================================= */
-
-.main-button {
-
-    display: inline-block;
-
-    padding: 15px 32px;
-
-    margin-top: 15px;
-
-    color: #fff;
-
-    background: #000;
-
-    border: 1px solid #fff;
-
-    text-decoration: none;
-
+.hero-main {
+    font-size: 18px;
     font-weight: bold;
 
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
-    transition: .4s;
-
-    box-shadow:
-
-        0 7px 0 #333,
-
-        0 15px 30px rgba(255,255,255,.1);
+    margin-bottom: 12px;
 }
 
+.hero-sub {
+    max-width: 650px;
 
-.main-button:hover {
+    color: #cfcfcf;
 
-    background: #fff;
-
-    color: #000;
-
-    transform:
-        translateY(-7px)
-        rotateX(8deg);
-
-    box-shadow:
-
-        0 12px 0 #777,
-
-        0 25px 50px rgba(255,255,255,.2);
+    line-height: 1.8;
 }
 
 
 /* =========================================
-   SECTION
+   LOGO CIRCLE
 ========================================= */
 
-.section {
+.logo-box {
+    width: 160px;
+    height: 160px;
 
-    min-height: 80vh;
+    position: relative;
 
-    padding: 120px 8%;
+    margin-bottom: 35px;
 
     display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
 
     align-items: center;
-
-    text-align: center;
-
-    border-top: 1px solid #1c1c1c;
-
-    perspective: 1200px;
-}
-
-
-.section-number {
-
-    color: #555;
-
-    letter-spacing: 6px;
-
-    font-size: 13px;
-
-    margin-bottom: 20px;
-}
-
-
-.section h2 {
-
-    font-size: clamp(40px, 7vw, 80px);
-
-    letter-spacing: 6px;
-
-    margin-bottom: 30px;
-
-    text-shadow:
-
-        0 3px 0 #444,
-
-        0 10px 25px rgba(255,255,255,.12);
-}
-
-
-.section-text {
-
-    max-width: 750px;
-
-    color: #888;
-
-    line-height: 1.9;
-
-    margin-bottom: 15px;
-}
-
-
-/* =========================================
-   PROJECT CREATE
-========================================= */
-
-.project-create {
-
-    width: 100%;
-
-    max-width: 700px;
-
-    padding: 35px;
-
-    margin-top: 35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #151515,
-            #050505
-        );
-
-    border: 1px solid #333;
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.8);
-}
-
-
-.project-create h3 {
-
-    letter-spacing: 3px;
-
-    margin-bottom: 20px;
-}
-
-
-.project-create input,
-.project-create textarea {
-
-    width: 100%;
-
-    margin: 8px 0;
-
-    padding: 15px;
-
-    background: #000;
-
-    color: #fff;
-
-    border: 1px solid #333;
-
-    outline: none;
-
-    font-family: inherit;
-
-    text-align: center;
-}
-
-
-.project-create textarea {
-
-    height: 130px;
-
-    resize: vertical;
-}
-
-
-.project-create input:focus,
-.project-create textarea:focus {
-
-    border-color: #fff;
-
-    box-shadow:
-        0 0 20px rgba(255,255,255,.08);
-}
-
-
-/* =========================================
-   PROJECT LIST
-========================================= */
-
-.project-list {
-
-    width: 100%;
-
-    max-width: 1100px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 25px;
-
-    margin-top: 50px;
-}
-
-
-.project-card {
-
-    background:
-        linear-gradient(
-            145deg,
-            #151515,
-            #050505
-        );
-
-    border: 1px solid #292929;
-
-    padding: 25px;
-
-    min-height: 280px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
-    transition: .5s;
-
-    transform-style: preserve-3d;
-}
-
-
-.project-card:hover {
-
-    transform:
-        perspective(800px)
-        rotateX(6deg)
-        rotateY(-6deg)
-        translateY(-12px);
-
-    border-color: #fff;
-
-    box-shadow:
-        0 25px 50px rgba(255,255,255,.08);
-}
-
-
-.project-image {
-
-    width: 100%;
-
-    height: 150px;
-
-    object-fit: cover;
-
-    margin-bottom: 20px;
-
-    border: 1px solid #222;
-}
-
-
-.project-card h3 {
-
-    letter-spacing: 3px;
-
-    margin-bottom: 10px;
-}
-
-
-.project-card p {
-
-    color: #777;
-
-    line-height: 1.7;
-
-    margin-bottom: 20px;
-}
-
-
-.project-actions {
-
-    display: flex;
-
     justify-content: center;
 
-    gap: 10px;
-}
-
-
-.project-actions button {
-
-    padding: 9px 16px;
-
-    color: #fff;
-
     background: #000;
 
-    border: 1px solid #444;
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-
-.project-actions button:hover {
-
-    background: #fff;
-
-    color: #000;
-}
-
-
-/* =========================================
-   FOUNDER
-========================================= */
-
-.founder-frame {
-
-    width: 220px;
-
-    height: 220px;
+    border:
+        2px solid white;
 
     border-radius: 50%;
 
-    overflow: hidden;
-
-    border: 2px solid #fff;
-
-    background: #080808;
-
-    margin: 30px 0;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
+    overflow: visible;
 
     box-shadow:
-        0 0 25px rgba(255,255,255,.15),
+        0 0 20px rgba(255, 255, 255, 0.45),
+        0 0 50px rgba(255, 255, 255, 0.12);
 
-        0 20px 50px rgba(255,255,255,.08);
-
-    transition: .5s;
+    transition: 0.4s ease;
 }
 
-
-.founder-frame:hover {
-
-    transform:
-        perspective(600px)
-        rotateY(10deg)
-        rotateX(5deg)
-        scale(1.05);
-}
-
-
-.founder-frame img {
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-}
-
-
-.founder-placeholder {
-
-    display: none;
-
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-    height: 100%;
-
-    color: #555;
-
-    letter-spacing: 3px;
-}
-
-
-.founder-name {
-
-    font-size: 28px;
-
-    letter-spacing: 5px;
-
-    margin-bottom: 10px;
-}
-
-
-.founder-role,
-.founder-skills {
-
-    color: #777;
-
-    margin: 5px;
-}
-
-
-/* =========================================
-   CONTACT
-========================================= */
-
-.contact-box {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 15px;
-}
-
-
-.contact-box a,
-.contact-box div {
-
-    min-width: 250px;
-
-    padding: 15px 25px;
-
-    border: 1px solid #222;
-
-    color: #fff;
-
-    text-decoration: none;
-
-    transition: .4s;
-}
-
-
-.contact-box a:hover {
-
-    background: #fff;
-
-    color: #000;
-
-    transform:
-        translateY(-5px);
-}
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
-footer {
-
-    text-align: center;
-
-    padding: 70px 20px;
-
-    border-top: 1px solid #222;
-}
-
-
-footer h2 {
-
-    letter-spacing: 6px;
-
-    text-shadow:
-        0 0 20px #fff;
-}
-
-
-footer span {
-
-    color: #777;
-}
-
-
-footer p { }
+.logo-box:hover {
+   
