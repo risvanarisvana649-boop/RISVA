@@ -1,472 +1,305 @@
-/* =========================
-   RISVA AI
-   Creative Engine
-========================= */
+/* =========================================
+   RISVA AI - PROJECT SYSTEM
+========================================= */
 
+const projectList = document.getElementById("projectList");
 
-/* LOGO UPLOAD */
+let projects = JSON.parse(
+    localStorage.getItem("RISVA_PROJECTS")
+) || [];
 
-const logoUpload = document.getElementById("logoUpload");
-const logoPreview = document.getElementById("logoPreview");
-const logoPlus = document.getElementById("logoPlus");
 
-logoUpload.addEventListener("change", function () {
+/* =========================================
+   SAVE PROJECT
+========================================= */
 
-    const file = this.files[0];
+function saveProject() {
 
-    if (!file) return;
+    const title =
+        document.getElementById("projectTitle").value.trim();
 
-    const reader = new FileReader();
+    const description =
+        document.getElementById("projectDescription").value.trim();
 
-    reader.onload = function (event) {
+    const image =
+        document.getElementById("projectImage").value.trim();
 
-        logoPreview.src = event.target.result;
 
-        logoPreview.style.display = "block";
+    if (title === "" || description === "") {
 
-        logoPlus.style.display = "none";
-
-        localStorage.setItem(
-            "risvaLogo",
-            event.target.result
-        );
-
-    };
-
-    reader.readAsDataURL(file);
-
-});
-
-
-/* LOAD LOGO */
-
-const savedLogo = localStorage.getItem("risvaLogo");
-
-if (savedLogo) {
-
-    logoPreview.src = savedLogo;
-
-    logoPreview.style.display = "block";
-
-    logoPlus.style.display = "none";
-
-}
-
-
-/* FOUNDER IMAGE */
-
-const founderUpload =
-    document.getElementById("founderUpload");
-
-const founderPreview =
-    document.getElementById("founderPreview");
-
-const founderPlus =
-    document.getElementById("founderPlus");
-
-
-founderUpload.addEventListener("change", function () {
-
-    const file = this.files[0];
-
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onload = function (event) {
-
-        founderPreview.src =
-            event.target.result;
-
-        founderPreview.style.display =
-            "block";
-
-        founderPlus.style.display =
-            "none";
-
-        localStorage.setItem(
-            "risvaFounder",
-            event.target.result
-        );
-
-    };
-
-    reader.readAsDataURL(file);
-
-});
-
-
-/* LOAD FOUNDER */
-
-const savedFounder =
-    localStorage.getItem("risvaFounder");
-
-if (savedFounder) {
-
-    founderPreview.src =
-        savedFounder;
-
-    founderPreview.style.display =
-        "block";
-
-    founderPlus.style.display =
-        "none";
-
-}
-
-
-/* =========================
-   CREATIVE ENGINE
-========================= */
-
-const challengeText =
-    document.getElementById("challengeText");
-
-
-const creativePrompts = {
-
-    scene: [
-
-        "A person enters an empty theatre at midnight. What do they see?",
-
-        "A train stops at a station where nobody is waiting.",
-
-        "Someone receives a letter written by their future self.",
-
-        "A small grocery shop becomes the most important place in someone's life.",
-
-        "Two strangers meet every day without knowing each other."
-
-    ],
-
-
-    character: [
-
-        "Create a character who hides one important truth from everyone.",
-
-        "Imagine a person who laughs whenever they are scared.",
-
-        "Create someone whose biggest weakness is also their greatest talent.",
-
-        "Imagine a character who wants to leave home but cannot.",
-
-        "Create a person who remembers things that never happened."
-
-    ],
-
-
-    emotion: [
-
-        "Take a happy scene and imagine it from a sad person's point of view.",
-
-        "Turn an ordinary conversation into an emotional goodbye.",
-
-        "Imagine a character discovering that their dream is closer than they thought.",
-
-        "Take a funny situation and slowly change its emotional meaning.",
-
-        "Imagine someone smiling while receiving heartbreaking news."
-
-    ],
-
-
-    visual: [
-
-        "Imagine a single wide shot that tells an entire story.",
-
-        "Create a scene using only shadows and reflections.",
-
-        "Imagine a character standing alone under one street light.",
-
-        "Tell a character's life story using objects instead of dialogue.",
-
-        "Imagine a room where every object has a hidden meaning."
-
-    ]
-
-};
-
-
-/* RANDOM PROMPT */
-
-function showPrompt(type) {
-
-    const list =
-        creativePrompts[type];
-
-    const random =
-        Math.floor(
-            Math.random() * list.length
-        );
-
-    challengeText.textContent =
-        list[random];
-
-}
-
-
-/* FILM TOOL BUTTONS */
-
-const toolButtons =
-    document.querySelectorAll(".tool-button");
-
-toolButtons.forEach(button => {
-
-    button.addEventListener("click", function () {
-
-        const tool =
-            this.dataset.tool;
-
-        showPrompt(tool);
-
-        document
-            .querySelector(".challenge-box")
-            .scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-
-    });
-
-});
-
-
-/* NEW POSSIBILITY */
-
-document
-    .getElementById("newChallenge")
-    .addEventListener("click", function () {
-
-        const types =
-            Object.keys(creativePrompts);
-
-        const randomType =
-            types[
-                Math.floor(
-                    Math.random() *
-                    types.length
-                )
-            ];
-
-        showPrompt(randomType);
-
-    });
-
-
-/* =========================
-   CREATIVE MODE CARDS
-========================= */
-
-const creativeCards =
-    document.querySelectorAll(".creative-card");
-
-const ideaInput =
-    document.getElementById("ideaInput");
-
-
-creativeCards.forEach(card => {
-
-    card.addEventListener("click", function () {
-
-        const mode =
-            this.dataset.mode;
-
-        const messages = {
-
-            film:
-                "Write a scene you can see clearly in your mind...",
-
-            story:
-                "Write one character and one problem...",
-
-            lyrics:
-                "Write one emotion in your own words...",
-
-            design:
-                "Describe the visual mood you imagine..."
-
-        };
-
-        ideaInput.placeholder =
-            messages[mode];
-
-        document
-            .querySelector(".idea-section")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-
-        ideaInput.focus();
-
-    });
-
-});
-
-
-/* =========================
-   IDEA STORAGE
-========================= */
-
-const saveIdea =
-    document.getElementById("saveIdea");
-
-const ideaCount =
-    document.getElementById("ideaCount");
-
-
-function loadIdeas() {
-
-    const ideas =
-        JSON.parse(
-            localStorage.getItem(
-                "risvaIdeas"
-            )
-        ) || [];
-
-    ideaCount.textContent =
-        ideas.length;
-
-}
-
-
-saveIdea.addEventListener("click", function () {
-
-    const text =
-        ideaInput.value.trim();
-
-    if (!text) {
-
-        alert(
-            "First write your creative thought."
-        );
+        alert("Please enter project title and description.");
 
         return;
-
     }
 
 
-    const ideas =
-        JSON.parse(
-            localStorage.getItem(
-                "risvaIdeas"
-            )
-        ) || [];
+    const project = {
+
+        id: Date.now(),
+
+        title: title,
+
+        description: description,
+
+        image: image
+
+    };
 
 
-    ideas.push({
+    projects.push(project);
 
-        text: text,
+    saveToStorage();
 
-        date:
-            new Date().toLocaleString()
+    clearForm();
+
+    displayProjects();
+
+    alert("Project saved successfully!");
+
+
+}
+
+
+/* =========================================
+   DISPLAY PROJECTS
+========================================= */
+
+function displayProjects() {
+
+    projectList.innerHTML = "";
+
+
+    if (projects.length === 0) {
+
+        projectList.innerHTML = `
+            <p class="empty-message">
+                No projects yet. Create your first project.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    projects.forEach(function(project) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "project-card";
+
+
+        let imageHTML = "";
+
+        if (project.image !== "") {
+
+            imageHTML = `
+                <img
+                    src="${escapeHTML(project.image)}"
+                    class="project-image"
+                    alt="Project Image"
+                    onerror="this.style.display='none'"
+                >
+            `;
+
+        }
+
+
+        card.innerHTML = `
+
+            ${imageHTML}
+
+            <div>
+
+                <h3>
+                    ${escapeHTML(project.title)}
+                </h3>
+
+                <p>
+                    ${escapeHTML(project.description)}
+                </p>
+
+            </div>
+
+
+            <div class="project-actions">
+
+                <button
+                    onclick="editProject(${project.id})"
+                >
+                    EDIT
+                </button>
+
+
+                <button
+                    onclick="deleteProject(${project.id})"
+                >
+                    DELETE
+                </button>
+
+            </div>
+
+        `;
+
+
+        projectList.appendChild(card);
 
     });
 
-
-    localStorage.setItem(
-        "risvaIdeas",
-        JSON.stringify(ideas)
-    );
+}
 
 
-    ideaInput.value = "";
+/* =========================================
+   EDIT PROJECT
+========================================= */
 
-    loadIdeas();
+function editProject(id) {
 
+    const project =
+        projects.find(function(item) {
 
-    saveIdea.textContent =
-        "SAVED ✓";
+            return item.id === id;
 
-
-    setTimeout(() => {
-
-        saveIdea.textContent =
-            "SAVE MY IDEA →";
-
-    }, 1800);
-
-});
+        });
 
 
-loadIdeas();
+    if (!project) return;
 
 
-/* =========================
-   MOUSE 3D EFFECT
-========================= */
-
-const cards =
-    document.querySelectorAll(
-        ".creative-card, .quote-card, .tool-button"
-    );
-
-
-cards.forEach(card => {
-
-    card.addEventListener(
-        "mousemove",
-        function (event) {
-
-            const rect =
-                this.getBoundingClientRect();
-
-            const x =
-                event.clientX -
-                rect.left;
-
-            const y =
-                event.clientY -
-                rect.top;
-
-            const centerX =
-                rect.width / 2;
-
-            const centerY =
-                rect.height / 2;
-
-            const rotateX =
-                ((y - centerY) /
-                    centerY) * -5;
-
-            const rotateY =
-                ((x - centerX) /
-                    centerX) * 5;
-
-
-            this.style.transform =
-                `perspective(900px)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)
-                 translateY(-8px)`;
-
-        }
-    );
-
-
-    card.addEventListener(
-        "mouseleave",
-        function () {
-
-            this.style.transform =
-                "";
-
-        }
-    );
-
-});
-
-
-/* =========================
-   PAGE INTRO
-========================= */
-
-window.addEventListener(
-    "load",
-    function () {
-
-        document.body.classList.add(
-            "loaded"
+    const newTitle =
+        prompt(
+            "Edit Project Title:",
+            project.title
         );
 
-    }
-);
+
+    if (newTitle === null) return;
+
+
+    const newDescription =
+        prompt(
+            "Edit Project Description:",
+            project.description
+        );
+
+
+    if (newDescription === null) return;
+
+
+    const newImage =
+        prompt(
+            "Edit Image URL:",
+            project.image
+        );
+
+
+    if (newImage === null) return;
+
+
+    project.title =
+        newTitle.trim();
+
+
+    project.description =
+        newDescription.trim();
+
+
+    project.image =
+        newImage.trim();
+
+
+    saveToStorage();
+
+    displayProjects();
+
+}
+
+
+/* =========================================
+   DELETE PROJECT
+========================================= */
+
+function deleteProject(id) {
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete this project?"
+        );
+
+
+    if (!confirmDelete) return;
+
+
+    projects =
+        projects.filter(function(project) {
+
+            return project.id !== id;
+
+        });
+
+
+    saveToStorage();
+
+    displayProjects();
+
+}
+
+
+/* =========================================
+   LOCAL STORAGE
+========================================= */
+
+function saveToStorage() {
+
+    localStorage.setItem(
+        "RISVA_PROJECTS",
+        JSON.stringify(projects)
+    );
+
+}
+
+
+/* =========================================
+   CLEAR FORM
+========================================= */
+
+function clearForm() {
+
+    document.getElementById(
+        "projectTitle"
+    ).value = "";
+
+
+    document.getElementById(
+        "projectDescription"
+    ).value = "";
+
+
+    document.getElementById(
+        "projectImage"
+    ).value = "";
+
+}
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+displayProjects();
