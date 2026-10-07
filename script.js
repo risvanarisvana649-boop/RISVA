@@ -302,4 +302,4 @@ function escapeHTML(text) {
    START
 ========================================= */
 
-displayProjects();  
+displayProjects();
