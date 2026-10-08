@@ -1,328 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>RISVA AI</title>
 
-    <title>RISVA AI | Creativity Starts With You</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
+    <!-- CINEMATIC BACKGROUND -->
 
-    <!-- ================= NAVBAR ================= -->
+    <div class="cinema-bg">
 
-    <nav class="navbar">
+        <div class="film-reel reel-left"></div>
 
-        <div class="nav-logo">
-            RISVA AI
+        <div class="spotlight spotlight-one"></div>
+
+        <div class="spotlight spotlight-two"></div>
+
+        <div class="clapper">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
 
+        <div class="film-strip"></div>
 
-        <div class="nav-links">
-
-            <a href="#home">HOME</a>
-
-            <a href="#about">ABOUT</a>
-
-            <a href="#projects">PROJECTS</a>
-
-            <a href="#founder">FOUNDER</a>
-
-            <a href="#contact">CONTACT</a>
-
-        </div>
-
-    </nav>
+    </div>
 
 
+    <!-- MAIN -->
 
-    <!-- ================= HERO ================= -->
+    <main class="page">
 
-    <section
-        id="home"
-        class="hero"
-    >
+        <section class="login-card">
 
 
-        <!-- LOGO -->
+            <!-- BRAND -->
 
-        <div class="logo-container">
+            <div class="brand">
 
+                <div class="brand-symbol">
+                    R
+                </div>
 
-            <label
-                for="logoUpload"
-                class="logo-add"
-                title="Set Logo"
-            >
+                <div>
 
-                +
+                    <h1>
+                        RISVA <span>AI</span>
+                    </h1>
 
-            </label>
+                    <p>
+                        From Idea → Story → Screen
+                    </p>
 
-
-            <input
-                type="file"
-                id="logoUpload"
-                accept="image/*"
-                hidden
-            >
-
-
-            <img
-                id="logoImage"
-                src=""
-                alt="RISVA Logo"
-            >
-
-
-            <div
-                id="logoText"
-                class="logo-text"
-            >
-
-                RISVA
+                </div>
 
             </div>
 
 
-        </div>
-
-
-
-        <h1 class="main-title">
-
-            RISVA AI
-
-        </h1>
-
-
-
-        <p class="tagline">
-
-            Creativity Starts With You.
-
-        </p>
-
-
-
-        <p class="hero-description">
-
-            RISVA AI doesn't create your creativity.
-
-            <br>
-
-            It activates it.
-
-        </p>
-
-
-
-        <a
-            href="#projects"
-            class="main-button"
-        >
-
-            EXPLORE PROJECTS
-
-        </a>
-
-
-    </section>
-
-
-
-    <!-- ================= ABOUT ================= -->
-
-    <section
-        id="about"
-        class="section"
-    >
-
-
-        <h2>
-
-            ABOUT RISVA
-
-        </h2>
-
-
-
-        <div class="about-box">
-
-
-            <p>
-
-                RISVA AI is a creative space designed
-                to help people discover, develop and
-                express their own ideas.
-
+            <p class="description">
+                A Creative AI Platform for Cinema & Storytelling
             </p>
 
 
-            <p>
+            <!-- CREATOR SECTION -->
 
-                It doesn't create ideas for you.
+            <div class="creator-section">
 
-                It helps you think differently and
-                turn your imagination into something
-                meaningful.
 
-            </p>
+                <!-- LOGO -->
 
+                <div class="profile-item">
 
-        </div>
+                    <div
+                        class="photo-circle logo-circle"
+                        id="logoBox"
+                    >
 
+                        <span
+                            id="logoPlus"
+                            class="plus"
+                        >
+                            +
+                        </span>
 
-    </section>
+                        <img
+                            id="logoPreview"
+                            alt="RISVA Logo"
+                        >
 
+                        <input
+                            type="file"
+                            id="logoInput"
+                            accept="image/*"
+                            hidden
+                            onchange="uploadLogo(event)"
+                        >
 
+                    </div>
 
-    <!-- ================= PROJECTS ================= -->
 
-    <section
-        id="projects"
-        class="section"
-    >
+                    <button
+                        class="upload-label"
+                        id="logoUploadButton"
+                        onclick="openLogoUpload()"
+                    >
+                        + Upload Logo
+                    </button>
 
+                </div>
 
-        <h2>
 
-            CREATIVE PROJECTS
 
-        </h2>
+                <!-- FOUNDER -->
 
+                <div class="profile-item">
 
-        <p class="section-subtitle">
+                    <div
+                        class="photo-circle founder-circle"
+                        id="founderBox"
+                    >
 
-            Anyone can share their creative project.
+                        <span
+                            id="founderPlus"
+                            class="plus"
+                        >
+                            +
+                        </span>
 
-        </p>
+                        <img
+                            id="founderPreview"
+                            alt="Founder Photo"
+                        >
 
+                        <input
+                            type="file"
+                            id="founderInput"
+                            accept="image/*"
+                            hidden
+                            onchange="uploadFounder(event)"
+                        >
 
+                    </div>
 
-        <!-- PROJECT FORM -->
 
-        <div class="project-form">
-
-
-            <input
-                type="text"
-                id="projectTitle"
-                placeholder="Project Title"
-            >
-
-
-            <textarea
-                id="projectDescription"
-                placeholder="Describe your project..."
-            ></textarea>
-
-
-            <input
-                type="text"
-                id="projectImage"
-                placeholder="Image URL (optional)"
-            >
-
-
-            <button
-                onclick="saveProject()"
-                class="save-button"
-            >
-
-                + ADD PROJECT
-
-            </button>
-
-
-        </div>
-
-
-
-        <!-- PROJECT LIST -->
-
-        <div
-            id="projectList"
-            class="project-list"
-        >
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- ================= FOUNDER ================= -->
-
-    <section
-        id="founder"
-        class="section"
-    >
-
-
-        <h2>
-
-            FOUNDER
-
-        </h2>
-
-
-
-        <div class="founder-card">
-
-
-            <!-- FOUNDER IMAGE -->
-
-            <div class="founder-image-box">
-
-
-                <label
-                    for="founderUpload"
-                    class="founder-add"
-                    title="Set Founder Image"
-                >
-
-                    +
-
-                </label>
-
-
-                <input
-                    type="file"
-                    id="founderUpload"
-                    accept="image/*"
-                    hidden
-                >
-
-
-                <img
-                    id="founderImage"
-                    src=""
-                    alt="Founder"
-                >
-
-
-                <div
-                    id="founderText"
-                    class="founder-placeholder"
-                >
-
-                    FOUNDER
+                    <button
+                        class="upload-label"
+                        id="founderUploadButton"
+                        onclick="openFounderUpload()"
+                    >
+                        + Founder Photo
+                    </button>
 
                 </div>
 
@@ -330,133 +162,185 @@
             </div>
 
 
+            <!-- VIEW INFORMATION -->
 
-            <h3>
+            <div class="creator-info">
 
-                A RISVANA BEGAM
+                <h3>
+                    RISVA AI
+                </h3>
 
-            </h3>
+                <p>
+                    Creative Platform
+                </p>
 
+                <span>
+                    Stories • Cinema • Creativity
+                </span>
 
-
-            <p>
-
-                B.Sc. Computer Science Student
-
-            </p>
-
-
-
-            <p class="founder-skills">
-
-                Creative Thinking •
-                Story Writing •
-                Concept Development •
-                Graphic Design •
-                Web Design •
-                AI Tools •
-                Video Editing
-
-            </p>
-
-
-        </div>
-
-
-    </section>
+            </div>
 
 
 
-    <!-- ================= CONTACT ================= -->
+            <!-- LOGIN -->
 
-    <section
-        id="contact"
-        class="section"
+            <div class="login-form">
+
+
+                <div class="input-group">
+
+                    <label>
+                        Username
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            👤
+                        </span>
+
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Enter username"
+                            autocomplete="username"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="input-group">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter password"
+                            autocomplete="current-password"
+                        >
+
+                        <button
+                            class="eye"
+                            onclick="togglePassword()"
+                            type="button"
+                        >
+                            ◉
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="login-button"
+                    onclick="login()"
+                >
+
+                    <span>
+                        LOGIN
+                    </span>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- OWNER -->
+
+            <div class="owner-control">
+
+                <button
+                    class="owner-button"
+                    onclick="ownerLogin()"
+                >
+                    ⚙ Owner Mode
+                </button>
+
+            </div>
+
+
+
+            <!-- FOOTER -->
+
+            <div class="footer">
+
+                <p>
+                    Create • Write • Imagine • Inspire
+                </p>
+
+                <span>
+                    RISVA AI — Creative Platform
+                </span>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- OWNER MODAL -->
+
+    <div
+        class="modal"
+        id="ownerModal"
     >
 
+        <div class="modal-card">
 
-        <h2>
-
-            CONTACT
-
-        </h2>
-
-
-
-        <div class="contact-box">
-
-
-            <a
-                href="mailto:risvanarisvana649@gmail.com"
+            <button
+                class="close"
+                onclick="closeOwnerModal()"
             >
+                ×
+            </button>
 
-                📧
-                risvanarisvana649@gmail.com
-
-            </a>
-
-
-
-            <a
-                href="tel:7904446315"
-            >
-
-                📞
-                7904446315
-
-            </a>
-
-
+            <h2>
+                Owner Mode
+            </h2>
 
             <p>
-
-                📍
-                Salem, Tamil Nadu, Tharamangalam
-
+                Owner password enter pannunga.
             </p>
 
+            <input
+                type="password"
+                id="ownerPassword"
+                placeholder="Owner Password"
+            >
+
+            <button
+                onclick="activateOwner()"
+            >
+                Activate
+            </button>
 
         </div>
 
-
-    </section>
-
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-
-        <h3>
-
-            RISVA AI
-
-        </h3>
-
-
-        <p>
-
-            Creativity Starts With You.
-
-        </p>
-
-
-        <p>
-
-            © 2026 RISVA AI.
-            All Rights Reserved.
-
-        </p>
-
-
-    </footer>
-
+    </div>
 
 
     <script src="script.js"></script>
 
-
 </body>
-
-</html> 
+</html>
